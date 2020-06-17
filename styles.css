@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ce6a6b;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.timer {
+    font-size: 50px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #ebaca2;
+}
+
+.container {
+    border: 3px solid #ebaca2;
+    border-radius: 10px;
+    width: 600px;
+    height: 410px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background-color: #ffdfcb;
+}
+
+@media (max-width: 630px) {
+    .container {
+        width: 400px;
+        height: 600px;
+    }
+}
+
+.quote {
+    margin: 15px 15px 20px 20px;
+    color: #212e53;
+    font-size: 25px;
+    align-self: flex-start;
+    user-select: none;
+}
+
+.input-quote {
+    margin: 12px 12px 8px 8px;
+    color: #212e53;
+    outline: none;
+    resize: none;
+    background-color: #ffdfcb;
+    height: 100%;
+    font-size: 25px;
+    border-radius: 8px;
+    padding: 10px;
+    transition: all .4s ease-in-out;
+}
+
+.input-quote:focus {
+    box-shadow: 0px 0px 5px #ce6a6b, 0px 0px 15px #ce6a6b, 0px 0px 10px #ffdfcb,
+        0px 0px 25px #ce6a6b;
+}
