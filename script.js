@@ -2,7 +2,7 @@ let doc = document;
 
 class Quote {
   constructor() {
-    this.API_URL = "http://api.quotable.io/random";
+    this.API_URL = "https://api.quotable.io/random";
     this.quote = "";
     this.textareaElement = doc.getElementById("quote");
     this.inputQuote = doc.getElementById("inputQuote");
