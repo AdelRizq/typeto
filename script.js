@@ -92,7 +92,6 @@ class Typeto {
       let WPM = Math.floor(
         quoteObject.len / 5 / (parseInt(this.timer.innerText) / 60)
       );
-      console.log(WPM);
 
       if (
         localStorage.getItem("score") === null ||

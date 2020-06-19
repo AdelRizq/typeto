@@ -89,3 +89,20 @@ body div:nth-child(5) {
     box-shadow: 0px 0px 5px #ce6a6b, 0px 0px 15px #ce6a6b, 0px 0px 10px #ffdfcb,
         0px 0px 25px #ce6a6b;
 }
+
+@media (max-width: 420px) {
+
+    .score,
+    .timer,
+    .title {
+        font-size: 30px
+    }
+
+    body div:nth-child(3) {
+        justify-self: center;
+    }
+
+    body div:nth-child(4) {
+        justify-self: center;
+    }
+}
