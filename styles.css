@@ -3,7 +3,8 @@
 }
 
 body {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     justify-content: center;
     align-items: center;
     background-color: #ce6a6b;
@@ -11,23 +12,44 @@ body {
     margin: 0;
     flex-direction: column;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    opacity: .8;
 }
 
-.timer {
+body div:nth-child(2) {
+    grid-column-start: span 2;
+    justify-self: center;
+}
+
+body div:nth-child(3) {
+    align-self: flex-start;
+}
+
+body div:nth-child(4) {
+    align-self: flex-start;
+    justify-self: end;
+}
+
+body div:nth-child(5) {
+    grid-column-start: span 2;
+    justify-self: center;
+    align-self: flex-start;
+}
+
+.title,
+.timer,
+.score {
     font-size: 50px;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #ebaca2;
 }
 
 .container {
     border: 3px solid #ebaca2;
     border-radius: 10px;
-    width: 600px;
-    height: 410px;
-
+    width: 700px;
+    max-width: 90%;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 10px 30px;
     background-color: #ffdfcb;
 }
 
@@ -42,6 +64,7 @@ body {
     margin: 15px 15px 20px 20px;
     color: #212e53;
     font-size: 25px;
+
     align-self: flex-start;
     user-select: none;
 }
@@ -52,11 +75,14 @@ body {
     outline: none;
     resize: none;
     background-color: #ffdfcb;
-    height: 100%;
+    margin: auto;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    height: 15rem;
+    width: 100%;
     font-size: 25px;
     border-radius: 8px;
-    padding: 10px;
-    transition: all .4s ease-in-out;
+    padding: .5rem 1rem;
+    transition: all .3s ease-in-out;
 }
 
 .input-quote:focus {

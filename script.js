@@ -2,10 +2,11 @@ let doc = document;
 
 class Quote {
   constructor() {
-    this.API_URL = "http://api.quotable.io/random";
+    this.API_URL = "https://api.quotable.io/random";
     this.quote = "";
     this.textareaElement = doc.getElementById("quote");
     this.inputQuote = doc.getElementById("inputQuote");
+    this.len = 0;
   }
 
   getRandomQuote() {
@@ -15,15 +16,17 @@ class Quote {
   }
 
   async getNextQuote() {
+    this.inputQuote.value = "";
+
     this.quote = await this.getRandomQuote();
+
+    this.len = this.quote.length;
     this.textareaElement.innerHTML = "";
     this.quote.split("").forEach((character) => {
       const characterSpan = doc.createElement("span");
       characterSpan.innerText = character;
       this.textareaElement.appendChild(characterSpan);
     });
-
-    this.inputQuote.value = "";
   }
 }
 
@@ -32,7 +35,12 @@ class Typeto {
     this.timer = doc.getElementById("timer");
     this.quote = doc.getElementById("quote");
     this.inputQuote = doc.getElementById("inputQuote");
+    this.score = doc.getElementById("score");
     this.quoteObj = new Quote();
+
+    if (localStorage.getItem("score") === null) {
+      localStorage.setItem("score", 0);
+    }
   }
 
   setup() {
@@ -40,8 +48,9 @@ class Typeto {
       timer.innerText++;
     }, 1000);
 
-    setInterval(this.checkTextMatching, 200, this.quoteObj);
     this.quoteObj.getNextQuote();
+    setInterval(this.checkTextMatching, 100, this.quoteObj);
+    this.score.innerText = localStorage.getItem("score");
   }
 
   start() {
@@ -49,9 +58,10 @@ class Typeto {
   }
 
   checkTextMatching(quoteObject) {
-    let originalText = this.quote.innerText,
-      inputText = this.inputQuote.value,
-      color = "black",
+    const originalText = this.quote.innerText,
+      inputText = this.inputQuote.value;
+
+    let color = "black",
       decoration = "none";
 
     for (let i = 0; i < originalText.length; i++) {
@@ -72,16 +82,34 @@ class Typeto {
       ).style.textDecoration = decoration;
     }
 
+    if (originalText.length === 0) {
+      return;
+    }
+
     if (originalText === inputText) {
       quoteObject.getNextQuote();
+
+      let WPM = Math.floor(
+        quoteObject.len / 5 / (parseInt(this.timer.innerText) / 60)
+      );
+      console.log(WPM);
+
+      if (
+        localStorage.getItem("score") === null ||
+        parseInt(localStorage.getItem("score")) < WPM
+      ) {
+        localStorage.setItem("score", WPM);
+        this.score.innerText = localStorage.getItem("score");
+      }
+      this.timer.innerText = "0";
       return;
     }
   }
 }
 
 function startLoading() {
-  let app = new Typeto();
-  app.start();
+  let typeto = new Typeto();
+  typeto.start();
 }
 
 if (doc.readyState === "loading") {
