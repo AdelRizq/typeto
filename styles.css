@@ -15,21 +15,21 @@ body {
     opacity: .8;
 }
 
-body div:nth-child(2) {
+body div:nth-child(1) {
     grid-column-start: span 2;
     justify-self: center;
 }
 
-body div:nth-child(3) {
+body div:nth-child(2) {
     align-self: flex-start;
 }
 
-body div:nth-child(4) {
+body div:nth-child(3) {
     align-self: flex-start;
     justify-self: end;
 }
 
-body div:nth-child(5) {
+body div:nth-child(4) {
     grid-column-start: span 2;
     justify-self: center;
     align-self: flex-start;
@@ -98,11 +98,11 @@ body div:nth-child(5) {
         font-size: 30px
     }
 
-    body div:nth-child(3) {
+    body div:nth-child(2) {
         justify-self: center;
     }
 
-    body div:nth-child(4) {
+    body div:nth-child(3) {
         justify-self: center;
     }
 }
